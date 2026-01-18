@@ -113,6 +113,7 @@
       tailscale-systray
       tree
       vscode
+      winbox4
       wofi
     ];
   };
