@@ -112,6 +112,7 @@
       nordzy-cursor-theme
       tailscale-systray
       tree
+      vscode
       wofi
     ];
   };
@@ -121,6 +122,8 @@
     noto-fonts-cjk-sans
     noto-fonts-color-emoji
   ];
+
+  programs.nix-ld.enable = true;
 
   programs.hyprland = {
     enable = true;
