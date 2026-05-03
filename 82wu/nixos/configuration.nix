@@ -123,6 +123,7 @@
       hyprlauncher
       hyprshot
       jetbrains.rust-rover
+      jetbrains-toolbox
       kdePackages.fcitx5-configtool
       kitty
       nordzy-cursor-theme
