@@ -114,7 +114,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.siketyan = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "libvirtd" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       ashell
       brightnessctl
@@ -124,17 +124,18 @@
       git
       hyprlauncher
       hyprshot
-      jetbrains.rust-rover
       jetbrains-toolbox
       kdePackages.fcitx5-configtool
       kitty
       nordzy-cursor-theme
+      starship
       tailscale-systray
       tree
       vscode
       winbox4
       wofi
     ];
+    shell = pkgs.fish;
   };
 
   fonts.packages = with pkgs; [
@@ -144,6 +145,8 @@
   ];
 
   programs.nix-ld.enable = true;
+
+  programs.fish.enable = true;
 
   programs.hyprland = {
     enable = true;
@@ -159,11 +162,16 @@
 
   programs.firefox.enable = true;
 
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
+    dnsmasq
     killall
     neofetch
+    qemu
     sddm-astronaut
     vim
     wget
