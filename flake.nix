@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,13 +14,27 @@
     {
       self,
       nixpkgs,
+      nixpkgs-unstable,
       treefmt-nix,
     }@inputs:
     {
       nixosConfigurations = {
         "82wu" = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
           specialArgs = { inherit inputs; };
-          modules = [ ./82wu/nixos/configuration.nix ];
+          modules = [
+            ./82wu/nixos/configuration.nix
+            {
+              nixpkgs.overlays = [
+                (final: prev: {
+                  unstable = import nixpkgs-unstable {
+                    system = final.system;
+                    config.allowUnfree = true;
+                  };
+                })
+              ];
+            }
+          ];
         };
       };
 

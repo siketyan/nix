@@ -6,13 +6,22 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 
 {
+  # disabledModules = [
+  #   "security/pam.nix"
+  # ];
+
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+
+    # "${inputs.nixpkgs-unstable}/nixos/modules/security/pam.nix"
+    "${inputs.nixpkgs-unstable}/nixos/modules/services/misc/linux-enable-ir-emitter.nix"
+    "${inputs.nixpkgs-unstable}/nixos/modules/services/security/howdy/default.nix"
   ];
 
   nix.settings = {
@@ -114,7 +123,10 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.siketyan = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "libvirtd" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [
+      "wheel" # Enable 'sudo' for the user.
+      "libvirtd"
+    ];
     packages = with pkgs; [
       ashell
       brightnessctl
@@ -165,14 +177,18 @@
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
 
+  documentation.man.generateCaches = false;
+
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     dnsmasq
+    ffmpeg
     killall
     neofetch
     qemu
     sddm-astronaut
+    v4l-utils
     vim
     wget
   ];
@@ -183,6 +199,16 @@
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
+  };
+
+  # security.pam.howdy.enable = true;
+  services.linux-enable-ir-emitter = {
+    enable = true;
+    package = pkgs.unstable.linux-enable-ir-emitter;
+  };
+  services.howdy = {
+    enable = true;
+    package = pkgs.unstable.howdy;
   };
 
   # List services that you want to enable:
