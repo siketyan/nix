@@ -8,6 +8,7 @@
     packages = with pkgs; [
       gcc
       gnumake
+      protonmail-desktop
       rustup
     ];
 
@@ -87,6 +88,10 @@
     ];
   };
 
+  programs.discord = {
+    enable = true;
+  };
+
   services.vicinae = {
     enable = true;
     systemd = {
@@ -146,8 +151,8 @@
           };
 
           # Activate/Deactive IME by Super L/R
-          "HotKey/ActivateKeys"."0" = "Super+Super_R";
-          "HotKey/DeactivateKeys"."0" = "Super+Super_L";
+          "HotKey/ActivateKeys"."0" = "Super_R";
+          "HotKey/DeactivateKeys"."0" = "Super_L";
 
           "HotKey/PrevPage"."0" = "Up";
           "HotKey/NextPage"."0" = "Down";
