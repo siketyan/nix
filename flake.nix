@@ -16,6 +16,10 @@
       url = "github:vicinaehq/vicinae/v0.20.15";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    ashell = {
+      url = "github:MalpenZibo/ashell/0.8.0";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
@@ -26,6 +30,7 @@
       treefmt-nix,
       home-manager,
       vicinae,
+      ashell,
     }@inputs:
     {
       nixosConfigurations = {

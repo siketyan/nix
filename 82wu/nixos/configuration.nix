@@ -130,7 +130,6 @@
       "libvirtd"
     ];
     packages = with pkgs; [
-      ashell
       brightnessctl
       dunst
       ghostty
@@ -197,6 +196,8 @@
     v4l-utils
     vim
     wget
+
+    inputs.ashell.packages.${pkgs.system}.default
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
