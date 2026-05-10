@@ -40,6 +40,16 @@
     };
   };
 
+  programs.ghostty = {
+    enable = true;
+    enableFishIntegration = true;
+    systemd.enable = true;
+    settings = {
+      theme = "Atom One Dark";
+      font-size = 10;
+    };
+  };
+
   programs.vscode = {
     enable = true;
     profiles.default.extensions = with pkgs.vscode-extensions; [
