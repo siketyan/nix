@@ -159,6 +159,7 @@
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
+    ashell
     brightnessctl
     dunst
     fastfetch
@@ -179,8 +180,6 @@
     virtualgl
     vim
     wget
-
-    inputs.ashell.packages.${pkgs.system}.default
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

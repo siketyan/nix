@@ -40,6 +40,30 @@
     };
   };
 
+  programs.ashell = {
+    enable = true;
+    settings = {
+      modules = {
+        left = [
+          "Workspaces"
+        ];
+        center = [
+          "Window Title"
+        ];
+        right = [
+          "Media Player"
+          "SystemInfo"
+          "Tray"
+          [
+            "Privacy"
+            "Settings"
+            "Tempo"
+          ]
+        ];
+      };
+    };
+  };
+
   programs.ghostty = {
     enable = true;
     enableFishIntegration = true;
@@ -76,6 +100,15 @@
       };
       launcher_window = {
         opacity = 0.90;
+      };
+    };
+  };
+
+  dconf = {
+    enable = true;
+    settings = {
+      "org/gnome/desktop/interface" = {
+        "color-scheme" = "prefer-dark";
       };
     };
   };
