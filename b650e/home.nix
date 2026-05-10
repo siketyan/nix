@@ -20,6 +20,11 @@
       commit = {
         gpgsign = true;
       };
+      credential = {
+        "https://github.com" = {
+          helper = "!/etc/profiles/per-user/siketyan/bin/gh auth git-credential";
+        };
+      };
     };
   };
 
