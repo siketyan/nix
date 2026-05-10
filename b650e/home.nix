@@ -1,0 +1,97 @@
+{ ... }:
+
+{
+  home = {
+    username = "siketyan";
+    homeDirectory = "/home/siketyan";
+
+    stateVersion = "25.11";
+  };
+
+  programs.home-manager.enable = true;
+
+  programs.git = {
+    enable = true;
+    settings = {
+      user = {
+        name = "Naoki Ikeguchi";
+        email = "me@s6n.jp";
+      };
+      commit = {
+        gpgsign = true;
+      };
+    };
+  };
+
+  programs.vscode = {
+    enable = true;
+  };
+
+  services.vicinae = {
+    enable = true;
+    systemd = {
+      enable = true;
+      autoStart = true;
+      environment = {
+        USE_LAYER_SHELL = 1;
+        NIXOS_OZONE_WL = 1;
+      };
+    };
+    settings = {
+      font = {
+        normal = {
+          size = 10;
+          family = "Noto Sans";
+        };
+      };
+      launcher_window = {
+        opacity = 0.90;
+      };
+    };
+  };
+
+  gtk = {
+    enable = true;
+    iconTheme.name = "Papirus-Dark";
+  };
+
+  i18n.inputMethod.fcitx5.ignoreUserConfig = true;
+  i18n.inputMethod.fcitx5.settings = {
+    globalOptions = {
+      Behavior = {
+        ActiveByDefault = false;
+        DefaultPageSize = 5;
+        PreeditEnabledByDefault = true;
+        PreloadInputMethod = true;
+        ShowFirstInputMethodInformation = true;
+        ShowInputMethodInformation = true;
+      };
+
+      HotKey = {
+        ModifierOnlyKeyTimeout = 250;
+      };
+
+      # Activate/Deactive IME by Super L/R
+      "HotKey/ActivateKeys"."0" = "Super+Super_R";
+      "HotKey/DeactivateKeys"."0" = "Super+Super_L";
+
+      "HotKey/PrevPage"."0" = "Up";
+      "HotKey/NextPage"."0" = "Down";
+      "HotKey/PrevCandidate"."0" = "Shift+Tab";
+      "HotKey/NextCandidate"."0" = "Tab";
+    };
+    inputMethod = {
+      "Groups/0" = {
+        Name = "Default";
+        DefaultIM = "mozc";
+        "Default Layout" = "us";
+      };
+      "Groups/0/Items/0".Name = "keyboard-us";
+      "Groups/0/Items/1".Name = "mozc";
+
+      GroupOrder = {
+        "0" = "Default";
+      };
+    };
+  };
+}

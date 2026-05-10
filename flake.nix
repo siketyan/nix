@@ -67,6 +67,24 @@
             }
           ];
         };
+        b650e = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./b650e/nixos/configuration.nix
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.siketyan = {
+                imports = [
+                  vicinae.homeManagerModules.default
+                  ./b650e/home.nix
+                ];
+              };
+            }
+          ];
+        };
       };
 
       formatter.x86_64-linux = treefmt-nix.lib.mkWrapper nixpkgs.legacyPackages.x86_64-linux {
