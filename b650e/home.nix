@@ -6,6 +6,8 @@
     homeDirectory = "/home/siketyan";
 
     packages = with pkgs; [
+      gcc
+      gnumake
       rustup
     ];
 
