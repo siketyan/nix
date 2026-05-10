@@ -130,25 +130,10 @@
       "libvirtd"
     ];
     packages = with pkgs; [
-      brightnessctl
-      dunst
-      ghostty
       gh
-      git
-      hyprlauncher
-      hyprshot
       jetbrains-toolbox
-      kdePackages.fcitx5-configtool
-      kitty
-      nordzy-cursor-theme
       spotify
-      starship
-      swaylock
-      tailscale-systray
-      tree
-      vscode
       winbox4
-      wofi
     ];
     shell = pkgs.fish;
   };
@@ -164,12 +149,6 @@
   programs.fish.enable = true;
 
   programs.niri.enable = true;
-
-  programs.hyprland = {
-    enable = true;
-    withUWSM = true;
-    xwayland.enable = true;
-  };
 
   programs._1password.enable = true;
   programs._1password-gui = {
@@ -187,14 +166,23 @@
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
-    dnsmasq
+    brightnessctl
+    dunst
     ffmpeg
+    ghostty
+    git
+    kdePackages.fcitx5-configtool
     killall
     neofetch
+    nordzy-cursor-theme
     papirus-icon-theme
     p7zip
     qemu
     sddm-astronaut
+    starship
+    swaylock
+    tailscale-systray
+    tree
     v4l-utils
     vim
     wget
