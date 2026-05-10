@@ -3,8 +3,6 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
 {
-  config,
-  lib,
   pkgs,
   inputs,
   ...
@@ -174,6 +172,7 @@
     kdePackages.fcitx5-configtool
     killall
     neofetch
+    nixd
     nordzy-cursor-theme
     papirus-icon-theme
     p7zip
