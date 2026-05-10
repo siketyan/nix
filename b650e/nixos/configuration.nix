@@ -74,6 +74,7 @@
   hardware.graphics.enable = true;
   hardware.nvidia.modesetting.enable = true;
   hardware.nvidia.open = false;
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;

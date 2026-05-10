@@ -6,11 +6,11 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     vicinae = {
       url = "github:vicinaehq/vicinae/v0.20.15";
@@ -67,7 +67,7 @@
             }
           ];
         };
-        b650e = nixpkgs.lib.nixosSystem {
+        b650e = nixpkgs-unstable.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
             ./b650e/nixos/configuration.nix
