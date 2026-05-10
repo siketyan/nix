@@ -116,6 +116,9 @@
     };
   };
 
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.login.enableGnomeKeyring = true;
+
   services.upower.enable = true;
 
   services.hardware.openrgb = {
@@ -186,6 +189,7 @@
     virtualgl
     vim
     wget
+    xwayland-satellite
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
