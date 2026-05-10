@@ -173,6 +173,7 @@
     dunst
     fastfetch
     ffmpeg
+    gcr
     ghostty
     git
     nixd
