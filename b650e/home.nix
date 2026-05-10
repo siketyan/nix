@@ -118,42 +118,49 @@
     iconTheme.name = "Papirus-Dark";
   };
 
-  i18n.inputMethod.fcitx5.ignoreUserConfig = true;
-  i18n.inputMethod.fcitx5.settings = {
-    globalOptions = {
-      Behavior = {
-        ActiveByDefault = false;
-        DefaultPageSize = 5;
-        PreeditEnabledByDefault = true;
-        PreloadInputMethod = true;
-        ShowFirstInputMethodInformation = true;
-        ShowInputMethodInformation = true;
-      };
+  i18n.inputMethod = {
+    enable = true;
+    type = "fcitx5";
+    fcitx5 = {
+      waylandFrontend = true;
+      addons = [ pkgs.fcitx5-mozc ];
+      settings = {
+        globalOptions = {
+          Behavior = {
+            ActiveByDefault = false;
+            DefaultPageSize = 5;
+            PreeditEnabledByDefault = true;
+            PreloadInputMethod = true;
+            ShowFirstInputMethodInformation = true;
+            ShowInputMethodInformation = true;
+          };
 
-      HotKey = {
-        ModifierOnlyKeyTimeout = 250;
-      };
+          HotKey = {
+            ModifierOnlyKeyTimeout = 250;
+          };
 
-      # Activate/Deactive IME by Super L/R
-      "HotKey/ActivateKeys"."0" = "Super+Super_R";
-      "HotKey/DeactivateKeys"."0" = "Super+Super_L";
+          # Activate/Deactive IME by Super L/R
+          "HotKey/ActivateKeys"."0" = "Super+Super_R";
+          "HotKey/DeactivateKeys"."0" = "Super+Super_L";
 
-      "HotKey/PrevPage"."0" = "Up";
-      "HotKey/NextPage"."0" = "Down";
-      "HotKey/PrevCandidate"."0" = "Shift+Tab";
-      "HotKey/NextCandidate"."0" = "Tab";
-    };
-    inputMethod = {
-      "Groups/0" = {
-        Name = "Default";
-        DefaultIM = "mozc";
-        "Default Layout" = "us";
-      };
-      "Groups/0/Items/0".Name = "keyboard-us";
-      "Groups/0/Items/1".Name = "mozc";
+          "HotKey/PrevPage"."0" = "Up";
+          "HotKey/NextPage"."0" = "Down";
+          "HotKey/PrevCandidate"."0" = "Shift+Tab";
+          "HotKey/NextCandidate"."0" = "Tab";
+        };
+        inputMethod = {
+          "Groups/0" = {
+            Name = "Default";
+            DefaultIM = "mozc";
+            "Default Layout" = "us";
+          };
+          "Groups/0/Items/0".Name = "keyboard-us";
+          "Groups/0/Items/1".Name = "mozc";
 
-      GroupOrder = {
-        "0" = "Default";
+          GroupOrder = {
+            "0" = "Default";
+          };
+        };
       };
     };
   };
