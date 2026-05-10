@@ -141,6 +141,7 @@
       kdePackages.fcitx5-configtool
       kitty
       nordzy-cursor-theme
+      spotify
       starship
       swaylock
       tailscale-systray
