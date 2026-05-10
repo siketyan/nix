@@ -5,6 +5,10 @@
     username = "siketyan";
     homeDirectory = "/home/siketyan";
 
+    packages = with pkgs; [
+      rustup
+    ];
+
     stateVersion = "25.11";
   };
 
