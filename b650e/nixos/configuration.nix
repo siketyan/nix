@@ -118,6 +118,12 @@
 
   services.upower.enable = true;
 
+  services.hardware.openrgb = {
+    enable = true;
+    package = pkgs.openrgb-with-all-plugins;
+    motherboard = "amd";
+  };
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.siketyan = {
     isNormalUser = true;
