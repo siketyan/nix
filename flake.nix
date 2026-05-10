@@ -8,6 +8,14 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    vicinae = {
+      url = "github:vicinaehq/vicinae/v0.20.15";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs =
@@ -16,6 +24,8 @@
       nixpkgs,
       nixpkgs-unstable,
       treefmt-nix,
+      home-manager,
+      vicinae,
     }@inputs:
     {
       nixosConfigurations = {
@@ -23,7 +33,10 @@
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
           modules = [
+            # NixOS Configuration
             ./82wu/nixos/configuration.nix
+
+            # Nixpkgs Overlays
             {
               nixpkgs.overlays = [
                 (final: prev: {
@@ -33,6 +46,19 @@
                   };
                 })
               ];
+            }
+
+            # Home Manager
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.siketyan = {
+                imports = [
+                  vicinae.homeManagerModules.default
+                  ./82wu/home.nix
+                ];
+              };
             }
           ];
         };

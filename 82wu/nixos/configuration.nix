@@ -31,9 +31,11 @@
     ];
     extra-substituters = [
       "https://siketyan.cachix.org"
+      "https://vicinae.cachix.org"
     ];
     trusted-public-keys = [
       "siketyan.cachix.org-1:WNNtRH3yo7wUpQ0aURUTCq2BpF97m4UsP0h1nKe6pAA="
+      "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
     ];
   };
 
@@ -141,6 +143,7 @@
       kitty
       nordzy-cursor-theme
       starship
+      swaylock
       tailscale-systray
       tree
       vscode
@@ -159,6 +162,8 @@
   programs.nix-ld.enable = true;
 
   programs.fish.enable = true;
+
+  programs.niri.enable = true;
 
   programs.hyprland = {
     enable = true;
@@ -186,6 +191,7 @@
     ffmpeg
     killall
     neofetch
+    p7zip
     qemu
     sddm-astronaut
     v4l-utils
