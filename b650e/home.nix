@@ -6,9 +6,13 @@
     homeDirectory = "/home/siketyan";
 
     packages = with pkgs; [
+      cargo-insta
+      codex
+      just
       gcc
       gnumake
       protonmail-desktop
+      ripgrep
       rustup
     ];
 
