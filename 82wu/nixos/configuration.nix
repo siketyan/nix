@@ -191,6 +191,7 @@
     ffmpeg
     killall
     neofetch
+    papirus-icon-theme
     p7zip
     qemu
     sddm-astronaut
