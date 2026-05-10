@@ -21,6 +21,7 @@
       autoStart = true;
       environment = {
         USE_LAYER_SHELL = 1;
+        NIXOS_OZONE_WL = 1;
       };
     };
     settings = {
