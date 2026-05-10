@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   home = {
@@ -9,6 +9,18 @@
   };
 
   programs.home-manager.enable = true;
+
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = ''
+      set fish_greeting
+    '';
+  };
+
+  programs.starship = {
+    enable = true;
+    enableFishIntegration = true;
+  };
 
   programs.git = {
     enable = true;
@@ -30,6 +42,9 @@
 
   programs.vscode = {
     enable = true;
+    profiles.default.extensions = with pkgs.vscode-extensions; [
+      jnoortheen.nix-ide
+    ];
   };
 
   services.vicinae = {
