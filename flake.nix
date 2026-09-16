@@ -34,24 +34,11 @@
     }@inputs:
     {
       nixosConfigurations = {
-        "82wu" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+        "82wu" = nixpkgs-unstable.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [
             # NixOS Configuration
             ./82wu/nixos/configuration.nix
-
-            # Nixpkgs Overlays
-            {
-              nixpkgs.overlays = [
-                (final: prev: {
-                  unstable = import nixpkgs-unstable {
-                    system = final.system;
-                    config.allowUnfree = true;
-                  };
-                })
-              ];
-            }
 
             # Home Manager
             home-manager.nixosModules.home-manager

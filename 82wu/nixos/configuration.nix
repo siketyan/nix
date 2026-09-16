@@ -16,10 +16,6 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-
-    # "${inputs.nixpkgs-unstable}/nixos/modules/security/pam.nix"
-    "${inputs.nixpkgs-unstable}/nixos/modules/services/misc/linux-enable-ir-emitter.nix"
-    "${inputs.nixpkgs-unstable}/nixos/modules/services/security/howdy/default.nix"
   ];
 
   nix.settings = {
@@ -166,12 +162,12 @@
   environment.systemPackages = with pkgs; [
     brightnessctl
     dunst
+    fastfetch
     ffmpeg
     ghostty
     git
     kdePackages.fcitx5-configtool
     killall
-    neofetch
     nixd
     nordzy-cursor-theme
     papirus-icon-theme
@@ -200,11 +196,9 @@
   # security.pam.howdy.enable = true;
   services.linux-enable-ir-emitter = {
     enable = true;
-    package = pkgs.unstable.linux-enable-ir-emitter;
   };
   services.howdy = {
     enable = true;
-    package = pkgs.unstable.howdy;
   };
 
   # List services that you want to enable:
