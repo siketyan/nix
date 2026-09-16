@@ -9,10 +9,6 @@
 }:
 
 {
-  # disabledModules = [
-  #   "security/pam.nix"
-  # ];
-
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -35,7 +31,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  boot.kernelPackages = pkgs.linuxPackages_6_18;
+  boot.kernelPackages = pkgs.linuxPackages_7_2;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -193,13 +189,9 @@
     enableSSHSupport = true;
   };
 
-  # security.pam.howdy.enable = true;
-  services.linux-enable-ir-emitter = {
-    enable = true;
-  };
-  services.howdy = {
-    enable = true;
-  };
+  security.pam.howdy.enable = true;
+  services.linux-enable-ir-emitter.enable = true;
+  services.howdy.enable = true;
 
   # List services that you want to enable:
 
