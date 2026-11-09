@@ -120,6 +120,7 @@
       "libvirtd"
     ];
     packages = with pkgs; [
+      claude-code
       gh
       jetbrains-toolbox
       spotify
