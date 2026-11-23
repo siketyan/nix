@@ -1,6 +1,13 @@
 {
   description = "My monorepo for Nix and NixOS configs";
 
+  nixConfig = {
+    extra-substituters = [ "https://cache.numtide.com" ];
+    extra-trusted-public-keys = [
+      "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+    ];
+  };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -20,6 +27,7 @@
       url = "github:MalpenZibo/ashell/0.8.0";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    llm-agents.url = "github:numtide/llm-agents.nix";
   };
 
   outputs =
@@ -31,6 +39,7 @@
       home-manager,
       vicinae,
       ashell,
+      llm-agents,
     }@inputs:
     {
       nixosConfigurations = {
@@ -77,6 +86,12 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./ms01/nixos/configuration.nix
+            ({ pkgs, ... }: {
+              environment.systemPackages = with llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
+                claude-code
+                codex
+              ];
+            })
           ];
         };
       };
