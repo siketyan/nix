@@ -2,7 +2,7 @@
   description = "My monorepo for Nix and NixOS configs";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
@@ -71,6 +71,12 @@
                 ];
               };
             }
+          ];
+        };
+        ms01 = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./ms01/nixos/configuration.nix
           ];
         };
       };
