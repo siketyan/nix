@@ -24,7 +24,7 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     ashell = {
-      url = "github:MalpenZibo/ashell/0.8.0";
+      url = "github:MalpenZibo/ashell/0.12.1";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     llm-agents.url = "github:numtide/llm-agents.nix";
@@ -90,6 +90,9 @@
               environment.systemPackages = with llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
                 claude-code
                 codex
+              ];
+              users.users.siketyan.packages = [
+                ashell.packages.${pkgs.stdenv.hostPlatform.system}.default
               ];
             })
           ];

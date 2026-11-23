@@ -79,7 +79,6 @@
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
-      ashell
       fastfetch
       fuzzel
       gh
